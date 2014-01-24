@@ -1,6 +1,8 @@
 HTML5 Thor
 ========================
 
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/newbreedofgeek/html5-thor/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
 HTML5 Thor is a simple HTML5 App Tooling framework that provides you the tools needed to build efficient single page or multi page Web Apps. It also has a complete GruntJS workflow.
 
 
@@ -94,9 +96,3 @@ http://markpaul.name/dont-delete/html5-thor/v1.0.0/src/tests
 ### Release History
 
 1.0.0 - (24/01/2014) Initial release that was forked out of HTML5 Skeletor.
-
-
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/newbreedofgeek/html5-thor/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
