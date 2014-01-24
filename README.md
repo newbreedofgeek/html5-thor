@@ -88,7 +88,7 @@ http://markpaul.name/dont-delete/html5-thor/v1.0.0/build
 
 ### Tests
 
-http://markpaul.name/dont-delete/html5-tjor/v1.0.0/src/tests
+http://markpaul.name/dont-delete/html5-thor/v1.0.0/src/tests
 
 
 ### Release History
