@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+    <meta charset="utf-8">
+    <title>HTML5 Skeletor - A simple HTML5 Responsive Front End Template</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+	<!-- Maintain responsive breakpoint in smalled screen
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+  ================================================== -->
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/skeleton.css">
+	<link rel="stylesheet" href="css/layout.css">
+	<link rel="stylesheet" href="css/loadie.css">
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+</head>
+<body data-controller="tools" data-action="counter">
+    <div class="bg-one"> </div>
+    <div class="container">
+        <div class="sixteen columns title-box">
+            <div class="sixteen columns header">
+                <h1>HTML5 Thor</h1>
+                <h2>A simple yet powerful HTML5 Framework for building Web Apps.</h2>
+                <div class="take-me-to-skeletor">Building a HTML5 Website? then try <a href="https://github.com/newbreedofgeek/html5-skeletor" target="_blank">HTML5 Skeletor instead</a></div>
+                <div class="credits">Thanks : <a href="http://nos.twnsnd.co/" target="_blank">For the Image</a> & <a href="http://www.fontsquirrel.com/fonts/Lobster" target="_blank">For the Font</a> </div>
+            </div>
+
+            <div id="sample-app-holder" class="sixteen columns">
+                <div class="title">Check out this Sample App</div>
+
+                <div class="wrap">
+                    <div class="brokerage-tool clearfix">
+                        <div class="header">
+                            <h1>
+                                Brokerage Counter
+                            </h1>
+                        </div>
+                        <div class="tool-holder">
+                            <div class="tool">
+                                <div class="t-rows">
+                                    <div class="slider clearfix">
+                                        <div class="lbl">Brokerage:</div>
+                                        <div class="slide-panel">
+                                            <div class="bar">
+                                                <div class="bar-inner"></div>
+                                            </div>
+                                            <div class="pointer">
+                                                <span class="pointer-arrow"></span>
+                                                <span class="dyn-pointer-val"></span>
+                                            </div>
+                                        </div>
+                                        <div class="goal-flag">
+                                            <span class="target-lbl">Target</span>
+                                            <span class="dyn-target-count"></span>
+                                        </div>
+                                    </div>
+                                    <div class="info clearfix">
+                                        <div class="checked"></div>
+                                        <div class="status">You need <span class="dyn-count"></span> more in brokerage to qualify.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="debug-panel">
+                            <div class="title">Debug Panel</div>
+                            <div class="do">Test a different initial value:</div>
+                            <input id="new-val" type="number" size="6" name="age" min="0" max="15" value="14" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <!-- container -->
+
+    <!--(if target dev)><!-->
+    <!--Standard Bower controlled packages-->
+    <script src="js/libraries/package/jquery/jquery.js" type="text/javascript"></script>
+    <script src="js/libraries/package/modernizr/modernizr.js" type="text/javascript"></script>
+    <script src="js/libraries/package/yepnope/yepnope.js" type="text/javascript"></script>
+
+    <!--All your other 3rd party libraries - make sure you add them to the libraryPackageMinFiles array in package.json -->
+    <script src="js/libraries/jquery.loadie.min.js" type="text/javascript"></script>
+    <!--<!(endif)-->
+
+    <script src="js/libraries.js" type="text/javascript"></script>
+    <script src="js/script.js" type="text/javascript"></script>
+
+
+</body>
+</html>
