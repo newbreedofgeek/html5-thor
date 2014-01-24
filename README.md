@@ -96,3 +96,7 @@ http://markpaul.name/dont-delete/html5-thor/v1.0.0/src/tests
 1.0.0 - (24/01/2014) Initial release that was forked out of HTML5 Skeletor.
 
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/newbreedofgeek/html5-thor/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
