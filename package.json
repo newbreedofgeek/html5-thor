@@ -1,6 +1,6 @@
 {
   "name": "html5-thor",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A simple yet powerful HTML5 Framework for building Web Apps.",
   "main": "index.html",
   "scripts": {
