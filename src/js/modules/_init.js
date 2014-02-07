@@ -1,5 +1,7 @@
+/* jshint ignore:start */
 var CBATOOLS = CBATOOLS || {};
 CBATOOLS.DEBUG = false;
+/* jshint ignore:start */
 
 /* Standard Garber-Irish Implementation  */
 CBATOOLS.exec = function (controller, action) {
