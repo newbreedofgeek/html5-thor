@@ -60,14 +60,14 @@ HTML5 Thor is a simple HTML5 App Tooling framework that provides you the tools n
 
 2. Install [Grunt](http://gruntjs.com/getting-started#installing-the-cli)
 
-3. Clone the html5-skeletor repository
+3. Clone the html5-thor repository
 ```
-$ git clone https://github.com/newbreedofgeek/html5-skeletor.git
+$ git clone https://github.com/newbreedofgeek/html5-thor.git
 ```
 
-4. Navigate to the html5-skeletor folder
+4. Navigate to the html5-thor folder
 ```
-$ cd html5-skeletor
+$ cd html5-thor
 ```
 
 5. Install dependencies
@@ -106,5 +106,7 @@ http://markpaul.name/dont-delete/html5-thor/v1.0.0/src/tests
 ### Release History
 1.1.0 - (7/02/2014) JSHint now runs using the .jshintrc file for portability. Although this in NOT a breaking change, the JSHint steps may fail due to more strict rules, if so you can tweak the .jshintrc file to fix them.
 + 1.1.1 - (7/02/2014) Fixed some ad-hoc bugs
++ 1.1.2 - (7/02/2014) Fixed some Typos
++ 1.1.3 - (7/02/2014) Fixed some Typos
 
 1.0.0 - (24/01/2014) Initial release that was forked out of HTML5 Skeletor.
