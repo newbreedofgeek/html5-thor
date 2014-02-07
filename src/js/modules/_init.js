@@ -1,19 +1,7 @@
 /* jshint ignore:start */
 var CBATOOLS = CBATOOLS || {};
 CBATOOLS.DEBUG = false;
-/* jshint ignore:start */
-
-/* Standard Garber-Irish Implementation  */
-CBATOOLS.exec = function (controller, action) {
-    "use strict";
-
-    var ns = CBATOOLS_INIT,
-        actionOveride = (action === undefined) ? 'init' : action;
-
-    if (controller !== '' && ns[controller] && typeof ns[controller][actionOveride] === 'function') {
-        ns[controller][actionOveride]();
-    }
-};
+/* jshint ignore:end */
 
 CBATOOLS.init = function () {
     "use strict";
@@ -44,5 +32,17 @@ var CBATOOLS_INIT = {
             // Start the 'loadie' plugin now to show around 50% has completed (just an ex example)
             $('body').loadie(0.5);
         }
+    }
+};
+
+/* Standard Garber-Irish Implementation  */
+CBATOOLS.exec = function (controller, action) {
+    "use strict";
+
+    var ns = CBATOOLS_INIT,
+        actionOveride = (action === undefined) ? 'init' : action;
+
+    if (controller !== '' && ns[controller] && typeof ns[controller][actionOveride] === 'function') {
+        ns[controller][actionOveride]();
     }
 };
