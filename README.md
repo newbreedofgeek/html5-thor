@@ -104,6 +104,8 @@ http://markpaul.name/dont-delete/html5-thor/v1.0.0/src/tests
 
 
 ### Release History
+2.0.0 - (7/02/2014) - We use cssmin to minify and concat your css files now.
+
 1.1.0 - (7/02/2014) JSHint now runs using the .jshintrc file for portability. Although this in NOT a breaking change, the JSHint steps may fail due to more strict rules, if so you can tweak the .jshintrc file to fix them.
 + 1.1.1 - (7/02/2014) Fixed some ad-hoc bugs
 + 1.1.2 - (7/02/2014) Fixed some Typos

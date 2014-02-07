@@ -6,7 +6,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         clean: {
-            src: ['build', 'deploy']
+            src: ['build', 'deploy', 'src/css/style.min.css']
         },
         uglify: {
             options: {
@@ -28,7 +28,7 @@ module.exports = function(grunt) {
             main: {
                 files: [
                     {expand: true, cwd: 'src/images/', src: ['**'], dest: 'build/images/'},
-                    {expand: true, cwd: 'src/css/', src: ['**'], dest: 'build/css/'},
+                    {expand: true, cwd: 'src/css/', src: ['style.min.css'], dest: 'build/css/'},
                     {expand: true, cwd: 'src/fonts/', src: ['**'], dest: 'build/fonts/'}
                 ]
             }
@@ -92,6 +92,16 @@ module.exports = function(grunt) {
                     ]
                 }
             }
+        },
+        cssmin: {
+            combine: {
+                options: {
+                    banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+                },
+                files: {
+                    'src/css/style.min.css': ['src/css/**/*.css']
+                }
+            }
         }
     });
 
@@ -104,6 +114,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-bower-task');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-qunit');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
     // Default task is to serve the app
     grunt.registerTask('default', function() {
@@ -111,13 +122,13 @@ module.exports = function(grunt) {
     });
 
     // Build and package app to zip
-    grunt.registerTask('package', ['jshint', 'test', 'clean', 'uglify', 'copy', 'targethtml', 'compress'] );
+    grunt.registerTask('package', ['jshint', 'test', 'clean', 'uglify', 'cssmin', 'copy', 'targethtml:dist', 'compress'] );
 
     // Serve working src locally
     grunt.registerTask('serve', ['clean', 'bower', 'connect:serverAlive'] );
 
     // Build the app
-    grunt.registerTask('build', ['jshint', 'test', 'clean', 'uglify', 'copy', 'targethtml']);
+    grunt.registerTask('build', ['jshint', 'test', 'clean', 'uglify', 'cssmin', 'copy', 'targethtml:dist']);
 
     // run apps unit tests
     grunt.registerTask('test', ['connect:server', 'qunit']);
