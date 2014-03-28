@@ -253,7 +253,7 @@ The src/index.html file is well commented with the rules so it's best you open a
 
 ### Demo
 
-http://markpaul.name/dont-delete/html5-thor/v3.0.0/build
+http://markpaul.name/dont-delete/html5-thor/v3.0.0/build/minified/
 + The demo shows the last version that had major UI updates (Patches and task/build updates are not shown as they wont be visible in the ui)
 
 
