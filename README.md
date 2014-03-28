@@ -57,16 +57,14 @@ HTML5 Thor is a simple HTML5 App Tooling framework that provides you the tools n
         $ grunt test:integration //Runs only the Integration tests
 
 
-
-## Supported Platforms
+### Supported Platforms
 
 * It runs on any OS / Platform that has support for a Node.js runtime
 * It has been tested on OSX and Windows 8, but it will run on other MacOS and Windows versions. It should also run on Linux machines
 * It has been built on Node.js v0.10.3, but it should be forward compatible with newer versions of Node.js
 
 
-
-## Setup / Get Started
+### Setup / Get Started
 
 1. Install [Node.js](http://nodejs.org/)
 
@@ -95,13 +93,11 @@ $ grunt serve
 7. Open <http://localhost:8000> to view your working app
 
 
-
-## Manual Steps
+### Manual Steps
 
 The SDK will continually strive for full automation, but for now the following manual steps will be needed in certain tasks.
 
 * In "build" and "package" your libraries are minified and joined, as we are using Bower for package fetching for certain JS libraries, we need to point to the exact js file within each Bower downloaded package. So make sure you update the 'libraryPackageMinFiles' variable in package.json to point to all your individual JS libraries that you want minified.
-
 
 
 ### Some important things to keep in mind before you get started…
@@ -110,7 +106,6 @@ The SDK will continually strive for full automation, but for now the following m
 3.  The 'version' in package.json is a very important tag that needs to be always accurate. We recommend the SemVer versioning system. (i.e. major.minor.path - e.g. 1.3.5)
 3.  The README.md file is your App's user Documentation, make sure you always keep this up to date. (.md) is a markdown file and you can use the markdown syntax to keep it pretty.
 4.  Make sure you add any local files/folders that you add to the app for your own benefit in the .gitignore file so as to not mess us the project wrapper for your other team members
-
 
 
 ### JavaScript Quality Control via JSHint
@@ -128,7 +123,6 @@ The SDK will continually strive for full automation, but for now the following m
 - **src/** Where you work from
 - **build/** Where your build files live
 - **deploy/** Where your build files are packaged for deployment
-
 
 
 ### Core SDK Files
@@ -153,7 +147,7 @@ This is file that stores meta data on your app and is a core file that you need 
 
 6. "README.md"
 This is your user Documentation. Keep it updated at all times as its best practice.
-
+```
 
 
 ### Using your own MVC or App Development Frameworks
@@ -257,12 +251,10 @@ The src/index.html file is well commented with the rules so it's best you open a
 ```
 
 
-
 ### Demo
 
 http://markpaul.name/dont-delete/html5-thor/v3.0.0/build
 + The demo shows the last version that had major UI updates (Patches and task/build updates are not shown as they wont be visible in the ui)
-
 
 
 ### Integration Tests
@@ -271,7 +263,8 @@ http://markpaul.name/dont-delete/html5-thor/v3.0.0/src/tests/integration
 
 
 ### Release History
-3.0.0 - (28/03/2014) -
+
+3.0.0 - (28/03/2014)
 - Adding seperate integration tests as well as even though you don't write unit tests you should at least maintain platform integration tests.
 - The build and package produces 2 versions of the app (minified and readable)
 - upgraded these plugins to the latest version (grunt-contrib-qunit, grunt-contrib-uglify, grunt-contrib-copy, grunt-contrib-compress, grunt-contrib-cssmin)
