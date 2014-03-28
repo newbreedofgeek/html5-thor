@@ -1,8 +1,8 @@
 {
-    "name": "html5-skeletor",
-    "version": "2.0.0",
+    "name": "html5-thor",
+    "version": "3.0.0",
     "dependencies": {
-        "jquery": "~1.8.3",
+        "jquery": "2.1.0",
         "modernizr": "~2.6.2",
         "yepnope": "~1.5.4"
     }

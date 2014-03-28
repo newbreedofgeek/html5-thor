@@ -1,6 +1,6 @@
 {
   "name": "html5-thor",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "description": "A simple yet powerful HTML5 Framework for building Web Apps.",
   "main": "index.html",
   "scripts": {
@@ -20,22 +20,23 @@
   "readmeFilename": "README.md",
   "gitHead": "63b46f5ec011a75b753e6ed469566ebeacc4c96c",
   "libraryPackageMinFiles": [
-    "src/js/libraries/package/jquery/jquery.min.js",
+    "src/js/libraries/package/jquery/jquery.js",
     "src/js/libraries/package/modernizr/modernizr.js",
-    "src/js/libraries/package/yepnope/yepnope.1.5.4-min.js",
-    "src/js/libraries/jquery.loadie.min.js"
+    "src/js/libraries/package/yepnope/yepnope.js",
+    "src/js/libraries/open-web/jquery.loadie.min.js"
   ],
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-uglify": "~0.2.2",
-    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-contrib-copy": "~0.5.0",
     "grunt-targethtml": "~0.2.4",
-    "grunt-contrib-compress": "~0.5.2",
+    "grunt-contrib-compress": "~0.7.0",
     "grunt-contrib-connect": "~0.3.0",
     "grunt-bower-task": "~0.3.1",
     "grunt-contrib-jshint": "~0.7.1",
-    "grunt-contrib-qunit": "~0.3.0",
-    "grunt-contrib-cssmin": "~0.7.0"
+    "grunt-contrib-qunit": "~0.4.0",
+    "grunt-contrib-cssmin": "~0.9.0",
+    "grunt-md2html": "~0.1.7"
   }
 }

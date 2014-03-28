@@ -6,44 +6,69 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         clean: {
-            src: ['build', 'deploy', 'src/css/style.min.css']
+            src: ['build', 'package']
         },
         uglify: {
-            options: {
-                banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
-                mangle: false
-            },
-            min: {
+            minified: {
+                options: {
+                    mangle: false,
+                    compress: false,
+                    banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+                },
                 files: [{
                     src:[ "src/js/modules/*.js"],
-                    dest: 'build/js/script.js'
+                    dest: 'build/minified/js/script.min.js'
                 },
-                {
-                    src: '<%= pkg.libraryPackageMinFiles %>',
-                    dest: 'build/js/libraries.js'
+                    {
+                        src: '<%= pkg.libraryPackageMinFiles %>',
+                        dest: 'build/minified/js/libraries.min.js'
+                    }]
+            },
+            readable: {
+                options: {
+                    mangle: false,
+                    compress: false,
+                    beautify: true,
+                    preserveComments: true,
+                    banner: '/*! Readable Version: <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+                },
+                files: [{
+                    src:[ "src/js/modules/*.js"],
+                    dest: 'build/readable/js/script.min.js'
                 }]
             }
         },
         copy: {
-            main: {
+            minified: {
                 files: [
-                    {expand: true, cwd: 'src/images/', src: ['**'], dest: 'build/images/'},
-                    {expand: true, cwd: 'src/css/', src: ['style.min.css'], dest: 'build/css/'},
-                    {expand: true, cwd: 'src/fonts/', src: ['**'], dest: 'build/fonts/'}
+                    {expand: true, cwd: 'src/images/', src: ['**'], dest: 'build/minified/images/'},
+                    {expand: true, cwd: 'src/fonts/', src: ['**'], dest: 'build/minified/fonts/'}
+                ]
+            },
+            readable: {
+                files: [
+                    {expand: true, cwd: 'src/images/', src: ['**'], dest: 'build/readable/images/'},
+                    {expand: true, cwd: 'src/fonts/', src: ['**'], dest: 'build/readable/fonts/'},
+                    {expand: true, cwd: 'build/minified/js/', src: ['libraries.min.js'], dest: 'build/readable/js/'}
                 ]
             }
         },
         targethtml: {
-            dist: {
-                files: {
-                    'build/index.html': 'src/index.html'
-                }
+            minified: {
+                files: [
+                    {'build/minified/index.html': 'src/index.html'}
+                ]
+            },
+            readable: {
+                files: [
+                    {'build/readable/index.html': 'src/index.html'}
+                ]
             }
         },
         compress: {
-            main: {
+            minified: {
                 options: {
-                    archive: 'deploy/build.zip'
+                    archive: 'package/build.tar'
                 },
                 files: [
                     {src: ['build/**'], dest: ''}
@@ -88,19 +113,55 @@ module.exports = function(grunt) {
             all: {
                 options: {
                     urls: [
-                        'http://localhost:8000/tests/index.html'
+                        'http://localhost:8000/tests/unit/index.html',
+                        'http://localhost:8000/tests/integration/index.html'
+                    ]
+                }
+            },
+            unit: {
+                options: {
+                    urls: [
+                        'http://localhost:8000/tests/unit/index.html'
+                    ]
+                }
+            },
+            integration: {
+                options: {
+                    urls: [
+                        'http://localhost:8000/tests/integration/index.html'
                     ]
                 }
             }
         },
         cssmin: {
-            combine: {
+            options: {
+                noAdvanced: true
+            },
+            minified: {
                 options: {
-                    banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+                    banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
                 },
                 files: {
-                    'src/css/style.min.css': ['src/css/**/*.css']
+                    'build/minified/css/style.min.css': ['src/css/**/*.css']
                 }
+            },
+            readable: {
+                options: {
+                    banner: '/*! Readable Version: <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+                    keepBreaks: true
+                },
+                files: {
+                    'build/readable/css/style.min.css': ['src/css/**/*.css']
+                }
+            }
+        },
+        md2html: {
+            one_file: {
+                options: {},
+                files: [{
+                    src: ['README.md'],
+                    dest: 'src/docs/readme.html'
+                }]
             }
         }
     });
@@ -115,22 +176,62 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-qunit');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-md2html');
 
-    // Default task is to serve the app
+
     grunt.registerTask('default', function() {
-        grunt.task.run(['build']);
+        grunt.task.run(['serve']);
     });
 
-    // Build and package app to zip
-    grunt.registerTask('package', ['jshint', 'test', 'clean', 'uglify', 'cssmin', 'copy', 'targethtml:dist', 'compress'] );
+    grunt.registerTask('package', function() {
+        grunt.task.run(['build', 'compress']);
+    });
 
-    // Serve working src locally
-    grunt.registerTask('serve', ['clean', 'bower', 'connect:serverAlive'] );
+    grunt.registerTask('document', function() {
+        grunt.task.run(['md2html']);
+    });
 
-    // Build the app
-    grunt.registerTask('build', ['jshint', 'test', 'clean', 'uglify', 'cssmin', 'copy', 'targethtml:dist']);
+    grunt.registerTask('serve', [
+        'clean',
+        'bower',
+        'document',
+        'connect:serverAlive'
+    ]);
 
-    // run apps unit tests
-    grunt.registerTask('test', ['connect:server', 'qunit']);
+    grunt.registerTask('build', function() {
+        grunt.customSdkMethods.logMinFilesMsg();
 
+        grunt.task.run([
+            'jshint',
+            'test',
+            'clean',
+            'uglify:minified',
+            'uglify:readable',
+            'cssmin:minified',
+            'cssmin:readable',
+            'copy:minified',
+            'copy:readable',
+            'targethtml:minified',
+            'targethtml:readable'
+        ]
+        );
+    });
+
+    grunt.registerTask('test', function(testType) {
+        if (!testType) {
+            testType = 'all';
+        }
+
+        grunt.task.run(['connect:server', 'qunit:' + testType]);
+    });
+
+    grunt.customSdkMethods = {
+        logMinFilesMsg : function() {
+            grunt.log.writeln('**************************************');
+            grunt.log.writeln('Building your app now... Please ensure that:');
+            grunt.log.writeln('');
+            grunt.log.writeln('(a) The libraryPackageMinFiles array in package.json includes the correct paths to all the library files you want included in your app.');
+            grunt.log.writeln('**************************************');
+        }
+    };
 };
