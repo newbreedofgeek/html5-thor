@@ -14,6 +14,8 @@ HTML5 Thor is a simple HTML5 App Tooling framework that provides you the tools n
 
 * Includes a QUnit based Unit and Integration test template which can be run in the browser or in headless mode using PhantomJS
 
+* It got some built in automation tools so it can be used like an SDK for large development teams (this is optional)
+
 * Includes a complete Grunt work flow, this currently has the following grunt tasks:
   + ** serve **
       - This is where you work from (called 'Dev mode'), it serves your app using localhost
@@ -157,7 +159,7 @@ Thor currently does not use any specific framework and instead is pure ""vanilla
 
 - HTML5 Thor is built in such a way that you can use your own preferred Frameworks to develop. This is because we want to promote open standards and innovation and let developers try out new frameworks.
 
-- But if you choose your own Development Framework you still need to maintain the HTML5 Thor's "Folder Structure Integrity" to ensure the app conforms to some automated 'hooks' our build systems look for when it comes time to review and deploy your code.
+- But if you choose your own Development Framework you still need to maintain the HTML5 Thor's "Folder Structure Integrity" to ensure the app conforms to a common structure (which will assist in CI automation etc).
 
 - As mentioned above in the 'Folder Structure' section, you develop by working in Dev mode which is purely within the 'src/' folder. The root page of your app is 'index.html'. The **'Src' Directory Structure Rules** and **'index.html' Page Structure Rules** you need to maintain within this src folder is given below.
 
@@ -271,7 +273,7 @@ Step 3 - It then makes sure the resulting builds conform to the following struct
 
 **2. Provides you a link to Sanity test both your 'minified' and 'readable' builds**
 
-Our automated systems will run the 'build' task to generate the app to prepare for deployment so you need to ensure that you Sanity test both the minified and readable builds. A link is provided for you to do the Sanity Tests.
+You need to ensure that you Sanity test both the minified and readable builds. A link is provided for you to do the Sanity Tests.
 
 ### Demo
 
