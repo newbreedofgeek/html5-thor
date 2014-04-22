@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/newbreedofgeek/html5-thor.png?label=ready&title=Ready)](https://waffle.io/newbreedofgeek/html5-thor)
 # HTML5 Thor
 HTML5 Thor is a simple HTML5 App Tooling framework that provides you the tools needed to build efficient single page or multi page Web Apps. It also has a complete GruntJS workflow.
 
