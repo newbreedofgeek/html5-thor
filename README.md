@@ -1,5 +1,4 @@
 # HTML5 Thor
-
 HTML5 Thor is a simple HTML5 App Tooling framework that provides you the tools needed to build efficient single page or multi page Web Apps. It also has a complete GruntJS workflow.
 
 ![image](http://markpaul.name/dont-delete/html5-thor/hotlink/thor-one.png)
@@ -16,16 +15,16 @@ HTML5 Thor is a simple HTML5 App Tooling framework that provides you the tools n
 
 * Includes a QUnit based Unit and Integration test template which can be run in the browser or in headless mode using PhantomJS
 
-* It got some built in automation tools so it can be used like an SDK for large development teams (this is optional)
+* It's got some built in automation tools so it can be used like an SDK for large development teams (this is optional)
 
 * Includes a complete Grunt work flow, this currently has the following grunt tasks:
-  + ** serve **
+  + **serve**
       - This is where you work from (called 'Dev mode'), it serves your app using localhost
       - Bower Package Management is used here to download and install the core libraries to make sure everyone uses the same versions
       	(This is the 1st step to run before using 'package' or 'build' as you need the Bower fetched libraries)
       - A src/docs/readme.html is also automatically generated and becomes the user documentation of your App. It's built using the README.md file so please keep that up to date as it forms your App's documentation.
 
-  + ** build **
+  + **build**
       - Applies JSHint to the core js files, lint errors need to be fixed to proceed
       - Executes the Unit and Integration tests in headless mode using PhantomJS, tests need to pass to proceed to next step
       - Builds two versions of your app:
@@ -35,10 +34,10 @@ HTML5 Thor is a simple HTML5 App Tooling framework that provides you the tools n
       	- readable :
 			- Does the same as above but it does not minify any file and keeps them readable. This build will be used to Audit your app for coding standards etc
 
-  + ** package **
+  + **package**
       - Does what 'build' does as well as packaging your build into a single TAR file (placed in /package)
 
-  + ** test **
+  + **test**
       - Runs the QUnit based Unit and Integration tests in headless mode
       - The following options are available:
 
@@ -47,7 +46,8 @@ HTML5 Thor is a simple HTML5 App Tooling framework that provides you the tools n
         $ grunt test:unit //Runs only the Unit tests
         $ grunt test:integration //Runs only the Integration tests
         ```
-  + ** validate **
+
+  + **validate**
       - This is a core utility task you can run to ensure that changes you make to the Core Thor files and folders dont break the 'Folder Structure Integrity' (see below)
 
 
