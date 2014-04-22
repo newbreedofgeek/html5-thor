@@ -65,13 +65,13 @@ $ grunt test:integration //Runs only the Integration tests</p>
 </ul>
 </li>
 </ul>
-<h2 id="supported-platforms">Supported Platforms</h2>
+<h3 id="supported-platforms">Supported Platforms</h3>
 <ul>
 <li>It runs on any OS / Platform that has support for a Node.js runtime</li>
 <li>It has been tested on OSX and Windows 8, but it will run on other MacOS and Windows versions. It should also run on Linux machines</li>
 <li>It has been built on Node.js v0.10.3, but it should be forward compatible with newer versions of Node.js</li>
 </ul>
-<h2 id="setup-get-started">Setup / Get Started</h2>
+<h3 id="setup-get-started">Setup / Get Started</h3>
 <ol>
 <li><p>Install <a href="http://nodejs.org/">Node.js</a></p>
 </li>
@@ -92,7 +92,7 @@ $ grunt test:integration //Runs only the Integration tests</p>
 <li><p>Open <a href="http://localhost:8000">http://localhost:8000</a> to view your working app</p>
 </li>
 </ol>
-<h2 id="manual-steps">Manual Steps</h2>
+<h3 id="manual-steps">Manual Steps</h3>
 <p>The SDK will continually strive for full automation, but for now the following manual steps will be needed in certain tasks.</p>
 <ul>
 <li>In &quot;build&quot; and &quot;package&quot; your libraries are minified and joined, as we are using Bower for package fetching for certain JS libraries, we need to point to the exact js file within each Bower downloaded package. So make sure you update the &#39;libraryPackageMinFiles&#39; variable in package.json to point to all your individual JS libraries that you want minified.</li>
@@ -138,35 +138,35 @@ This is file that stores meta data on your app and is a core file that you need 
 
 6. &quot;README.md&quot;
 This is your user Documentation. Keep it updated at all times as its best practice.
+</code></pre><h3 id="using-your-own-mvc-or-app-development-frameworks">Using your own MVC or App Development Frameworks</h3>
+<p><strong>The Current Framework:</strong></p>
+<p>This SDK uses a very simple MVC type framework which is based on the Garber-Irish implementation. This design provides a basic JS router between your view and controller. This system is more useful for &quot;multi page&quot; websites rather than &quot;single page&quot; web apps but we use it because we wanted to keep it simple and use vanilla JS. We also use YepNope as a Async file loader for loading multiple JS files in a sequence, where you specify the JS files you want loaded in the &#39;src/js/script.min.js&#39; file and YepNope does the dynamic  loading for you.</p>
+<p><strong>Using Other Frameworks:</strong></p>
+<ul>
+<li><p>The there many good MVC / Development Frameworks out there (Backbone.js, Knockout.JS - to name a few).</p>
+</li>
+<li><p>This SDK is built in such a way that you can use your own preferred Frameworks to develop. This is because we want to promote open standards and innovation and let developers try out new frameworks.</p>
+</li>
+<li><p>But if you choose your own Development Framework you need to maintain a basic &quot;SDK foundation structure&quot; within this SDK to ensure the app conforms to some automated &#39;hooks&#39; our build systems look for when you check your App into the Source Control System for review and testing.</p>
+</li>
+<li><p>As mentioned above in the &#39;Folder Structure&#39; section, you develop by working purely within the &#39;src/&#39; folder. The <strong>File System Foundation Structure Rules</strong> and <strong>HTML Page Foundation Structure Rules</strong> you need to maintain within this src folder is as below:</p>
+</li>
+</ul>
+<p><strong>FILE SYSTEM FOUNDATION STRUCTURE RULES</strong></p>
+<pre><code>src/
 
-
-
-### Using your own MVC or App Development Frameworks
-
-**The Current Framework:**
-
-This SDK uses a very simple MVC type framework which is based on the Garber-Irish implementation. This design provides a basic JS router between your view and controller. This system is more useful for &quot;multi page&quot; websites rather than &quot;single page&quot; web apps but we use it because we wanted to keep it simple and use vanilla JS. We also use YepNope as a Async file loader for loading multiple JS files in a sequence, where you specify the JS files you want loaded in the &#39;src/js/script.min.js&#39; file and YepNope does the dynamic  loading for you.
-
-**Using Other Frameworks:**
-
-- The there many good MVC / Development Frameworks out there (Backbone.js, Knockout.JS - to name a few).
-
-- This SDK is built in such a way that you can use your own preferred Frameworks to develop. This is because we want to promote open standards and innovation and let developers try out new frameworks.
-
-- But if you choose your own Development Framework you need to maintain a basic &quot;SDK foundation structure&quot; within this SDK to ensure the app conforms to some automated &#39;hooks&#39; our build systems look for when you check your App into the Source Control System for review and testing.
-
-- As mentioned above in the &#39;Folder Structure&#39; section, you develop by working purely within the &#39;src/&#39; folder. The **File System Foundation Structure Rules** and **HTML Page Foundation Structure Rules** you need to maintain within this src folder is as below:
-
-**FILE SYSTEM FOUNDATION STRUCTURE RULES**
-</code></pre><p>src/</p>
-<p>---- css/                    (all your standard .css files will live here)
+---- css/                    (all your standard .css files will live here)
 -------- open-web/             (all 3rd party/plugin .css files go here)
 ---- main.css                 (this can be your main .css file)
----- style.min.css             (this is a placeholder file used for builds, don&#39;t edit or delete it</p>
-<p>---- docs/                     (your documentation goes here)</p>
-<p>---- fonts/                 (your fonts go here)</p>
-<p>---- images/                 (your images go here)</p>
-<p>---- js/                     (all your .js files will live here)
+---- style.min.css             (this is a placeholder file used for builds, don&#39;t edit or delete it
+
+---- docs/                     (your documentation goes here)
+
+---- fonts/                 (your fonts go here)
+
+---- images/                 (your images go here)
+
+---- js/                     (all your .js files will live here)
 -------- libraries/
 ------------open-web/         (all open-source 3rd party/plugin .js files go here)
 ------------package/         (this is the folder for Bower packages to be inserted, don&#39;t edit or delete it)
@@ -181,76 +181,119 @@ This SDK uses a very simple MVC type framework which is based on the Garber-Iris
 --------integration/         (You integration tests go here. Only edit the tests.js file and don&#39;t
                             touch the index.html file)
 --------qunit-resource/     (Used for QUnit resources, don&#39;t edit or delete it)
---------unit/                 (You unit tests go here. Only edit the tests.js file and don&#39;t touch the index.html file)</p>
-<p>----index.html                (This is your app&#39;s HTML file - it needs to follow the
-                            HTML Page Foundation Structure Rules as below)</p>
-<pre><code>
-**HTML PAGE FOUNDATION STRUCTURE RULES**
+--------unit/                 (You unit tests go here. Only edit the tests.js file and don&#39;t touch the index.html file)
 
-The src/index.html file is well commented with the rules so it&#39;s best you open and read those comments but at a high level here is the HTML structure.
-</code></pre><html>
-    <head>
-        <!--------------------->
-        <!--S: CSS Files Area-->
-        <!--------------------->
-        <!--CSS Area 1 (Only used in Dev/Serve mode) - All your Standard CSS Files go here-->
-        <!--CSS Area 2 (Only used in Dev/Serve mode) - All your other 3rd party/plugin .css files go here (all files in the css/open-web folder)-->
+----index.html                (This is your app&#39;s HTML file - it needs to follow the
+                            HTML Page Foundation Structure Rules as below)
+</code></pre><p><strong>HTML PAGE FOUNDATION STRUCTURE RULES</strong></p>
+<p>The src/index.html file is well commented with the rules so it&#39;s best you open and read those comments but at a high level here is the HTML structure.</p>
+<pre><code>&lt;html&gt;
+    &lt;head&gt;
+        &lt;!---------------------&gt;
+        &lt;!--S: CSS Files Area--&gt;
+        &lt;!---------------------&gt;
+        &lt;!--CSS Area 1 (Only used in Dev/Serve mode) - All your Standard CSS Files go here--&gt;
+        &lt;!--CSS Area 2 (Only used in Dev/Serve mode) - All your other 3rd party/plugin .css files go here (all files in the css/open-web folder)--&gt;
 
-        <!--CSS Area 3 (- This is a placeholder style file used for builds, don't edit or delete it-->
-        <!--------------------->
-        <!--S: CSS Files Area-->
-        <!--------------------->
-    </head>
+        &lt;!--CSS Area 3 (- This is a placeholder style file used for builds, don&#39;t edit or delete it--&gt;
+        &lt;!---------------------&gt;
+        &lt;!--S: CSS Files Area--&gt;
+        &lt;!---------------------&gt;
+    &lt;/head&gt;
 
-    <body>
-        <!--------------------->
-        <!--S: HTML Code Area-->
-        <!--------------------->
-        <!--HTML Area 1 - All your HTML goes below here - Start-->
+    &lt;body&gt;
+        &lt;!---------------------&gt;
+        &lt;!--S: HTML Code Area--&gt;
+        &lt;!---------------------&gt;
+        &lt;!--HTML Area 1 - All your HTML goes below here - Start--&gt;
 
-        <!--All your HTML goes above here - End-->
-        <!--------------------->
-        <!--E: HTML Code Area-->
-        <!--------------------->
+        &lt;!--All your HTML goes above here - End--&gt;
+        &lt;!---------------------&gt;
+        &lt;!--E: HTML Code Area--&gt;
+        &lt;!---------------------&gt;
 
 
-        <!-------------------->
-        <!--S: JS Files Area-->
-        <!-------------------->
-        <!--JS Area 1 (Only used in Dev/Serve mode) - All your Bower package based .js files go here (all libs in the js/libraries/package folder)-->
-        <!--JS Area 2 (Only used in Dev/Serve mode) - All your other open-web/ and private/ .js files go here -->
-        <!--JS Area 3 (Only used in Dev/Serve mode) - All your module/ .js files go here (Currently using yepnope so we use the loader in script.min.js to load the module files) -->
-        <!--JS Area 4 - These are placeholder JS files used for builds, don't edit or delete it (But you can clear all code in script.min.js if you are not using yepnope)-->
-        <!-------------------->
-        <!--E: JS Files Area-->
-        <!-------------------->
-    </body>
-</html>
-
-<p>```</p>
-<h3 id="demo">Demo</h3>
-<p><a href="http://markpaul.name/dont-delete/html5-thor/v3.0.0/build">http://markpaul.name/dont-delete/html5-thor/v3.0.0/build</a></p>
+        &lt;!--------------------&gt;
+        &lt;!--S: JS Files Area--&gt;
+        &lt;!--------------------&gt;
+        &lt;!--JS Area 1 (Only used in Dev/Serve mode) - All your Bower package based .js files go here (all libs in the js/libraries/package folder)--&gt;
+        &lt;!--JS Area 2 (Only used in Dev/Serve mode) - All your other open-web/ and private/ .js files go here --&gt;
+        &lt;!--JS Area 3 (Only used in Dev/Serve mode) - All your module/ .js files go here (Currently using yepnope so we use the loader in script.min.js to load the module files) --&gt;
+        &lt;!--JS Area 4 - These are placeholder JS files used for builds, don&#39;t edit or delete it (But you can clear all code in script.min.js if you are not using yepnope)--&gt;
+        &lt;!--------------------&gt;
+        &lt;!--E: JS Files Area--&gt;
+        &lt;!--------------------&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h3 id="demo">Demo</h3>
+<p><a href="http://markpaul.name/dont-delete/html5-thor/v3.0.0/build/minified/">http://markpaul.name/dont-delete/html5-thor/v3.0.0/build/minified/</a></p>
 <ul>
 <li>The demo shows the last version that had major UI updates (Patches and task/build updates are not shown as they wont be visible in the ui)</li>
 </ul>
 <h3 id="integration-tests">Integration Tests</h3>
 <p><a href="http://markpaul.name/dont-delete/html5-thor/v3.0.0/src/tests/integration">http://markpaul.name/dont-delete/html5-thor/v3.0.0/src/tests/integration</a></p>
 <h3 id="release-history">Release History</h3>
-<p>3.0.0 - (28/03/2014) -</p>
 <ul>
-<li>Adding seperate integration tests as well as even though you don&#39;t write unit tests you should at least maintain platform integration tests.</li>
-<li>The build and package produces 2 versions of the app (minified and readable)</li>
-<li>upgraded these plugins to the latest version (grunt-contrib-qunit, grunt-contrib-uglify, grunt-contrib-copy, grunt-contrib-compress, grunt-contrib-cssmin)</li>
-<li>package task puts a tar file in a directory called package now and not deploy</li>
-<li>README.md is generated into a HTML user documentation file now.</li>
-<li>Major upgrade to the index.html file to be more descriptive and also for better dev/prod build flow control</li>
-<li>Major updates to the README.md</li>
+<li><p>4.0.0</p>
+<ul>
+<li>(Released on 22/04/2014) And differs from 3.0.0 as below:<ul>
+<li>Updated - the &quot;grunt-contrib-connect&quot; plugin. +</li>
+<li>Removed - the garber-irish JS code design as its too complicated for simple web apps. +</li>
+<li>Removed - the skeletor css templates +</li>
+<li>Removed - the ugly sample counter app +</li>
+<li>Updated - the &quot;__launch.js&quot; file is now called &quot;_appLaunch.js&quot;. +</li>
+<li>Added - a &#39;data&#39; folder to store your mock json data files. +</li>
+<li>Added (Tests): Now lets you use the same YepNope file to load your JS modules for unit testing.</li>
+<li>Added (Tests): Tests now work in Async mode when calling it using &quot;grunt test&quot; and will wait until the yepnope files load before running your tests.</li>
+<li>Added (Meta): package.json included &#39;thorVersion&#39; which should indicate the x.x.x version of HTML5 Thor being used (e.g. 0.2.0). +</li>
+<li>Removed (Meta): The &quot;version&quot; property in bower.json were removed as its not needed. +</li>
+<li>Added (Documentation): Added a section on &quot;Folder Structure Integrity&quot; which describes how automated systems will test your app&#39;s integrity and validate your app for conformance.</li>
+<li>Updated (Documentation): Documentaion has been updated to reflect the changes in this version.</li>
+<li>Other: Grunt &#39;serve&#39; auto loads the SDK in default browser, but this can be disabled if its annoying.</li>
+<li>Other: The JSHint config enables a &#39;node&#39; default environment as well.</li>
 </ul>
-<p>2.0.0 - (7/02/2014) - We use cssmin to minify and concat your css files now.</p>
-<p>1.1.0 - (7/02/2014) JSHint now runs using the .jshintrc file for portability. Although this in NOT a breaking change, the JSHint steps may fail due to more strict rules, if so you can tweak the .jshintrc file to fix them.</p>
+</li>
+</ul>
+</li>
+<li><p>3.0.0</p>
 <ul>
+<li>(Released on 28/03/2014) And differs from 2.0.0 as below:<ul>
+<li>Adding separate integration tests as well as even though you don&#39;t write unit tests you should at least maintain platform integration tests.</li>
+<li>The build and package produces 2 versions of the app (minified and readable).</li>
+<li>upgraded these plugins to the latest version (grunt-contrib-qunit, grunt-contrib-uglify, grunt-contrib-copy, grunt-contrib-compress, grunt-contrib-cssmin).</li>
+<li>package task puts a tar file in a directory called package now and not deploy.</li>
+<li>README.md is generated into a HTML user documentation file now.</li>
+<li>Major upgrade to the index.html file to be more descriptive and also for better dev/prod build flow control.</li>
+<li>Major updates to the README.md.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>2.0.0</p>
+<ul>
+<li>(Released on 7/02/2014)<ul>
+<li>We use cssmin to minify and concat your css files now.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>1.1.0</p>
+<ul>
+<li>(Released on 7/02/2014)<ul>
+<li>JSHint now runs using the .jshintrc file for portability. Although this in NOT a breaking change, the JSHint steps may fail due to more strict rules, if so you can tweak the .jshintrc file to fix them.</li>
 <li>1.1.1 - (7/02/2014) Fixed some ad-hoc bugs</li>
 <li>1.1.2 - (7/02/2014) Fixed some Typos</li>
 <li>1.1.3 - (7/02/2014) Fixed some Typos</li>
 </ul>
-<p>1.0.0 - (24/01/2014) Initial release that was forked out of HTML5 Skeletor.</p>
+</li>
+</ul>
+</li>
+<li><p>1.0.0</p>
+<ul>
+<li>(Released on 24/01/2014)<ul>
+<li>Initial release that was forked out of HTML5 Skeletor.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>

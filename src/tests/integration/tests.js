@@ -6,7 +6,7 @@ test('JQuery 2.1.0 Test', 1, function() {
 
     var testPassed = false;
 
-    if (jQuery.fn.jquery  == '2.1.0') {
+    if (jQuery.fn.jquery  === '2.1.0') {
         testPassed = true;
     }
 

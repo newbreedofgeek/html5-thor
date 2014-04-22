@@ -1,8 +1,13 @@
-module.exports = function(grunt) {
+var sdkNode = require('./sdk_core/node/helper');
+var sdkGrunt = require('./sdk_core/grunt/helper');
+var gruntHelper = {};
+var gruntSettings = {
+    autoLaunchBrowser: true
+};
 
+module.exports = function(grunt) {
     "use strict";
 
-    // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         clean: {
@@ -16,7 +21,7 @@ module.exports = function(grunt) {
                     banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
                 },
                 files: [{
-                    src:[ "src/js/modules/*.js"],
+                    src:[ "src/js/modules/*.js", "src/data/*.js"],
                     dest: 'build/minified/js/script.min.js'
                 },
                     {
@@ -33,7 +38,7 @@ module.exports = function(grunt) {
                     banner: '/*! Readable Version: <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
                 },
                 files: [{
-                    src:[ "src/js/modules/*.js"],
+                    src:[ "src/js/modules/*.js", "src/data/*.js"],
                     dest: 'build/readable/js/script.min.js'
                 }]
             }
@@ -42,13 +47,15 @@ module.exports = function(grunt) {
             minified: {
                 files: [
                     {expand: true, cwd: 'src/images/', src: ['**'], dest: 'build/minified/images/'},
-                    {expand: true, cwd: 'src/fonts/', src: ['**'], dest: 'build/minified/fonts/'}
+                    {expand: true, cwd: 'src/fonts/', src: ['**'], dest: 'build/minified/fonts/'},
+                    {expand: true, cwd: 'src/data/', src: ['**'], dest: 'build/minified/data/'}
                 ]
             },
             readable: {
                 files: [
                     {expand: true, cwd: 'src/images/', src: ['**'], dest: 'build/readable/images/'},
                     {expand: true, cwd: 'src/fonts/', src: ['**'], dest: 'build/readable/fonts/'},
+                    {expand: true, cwd: 'src/data/', src: ['**'], dest: 'build/readable/data/'},
                     {expand: true, cwd: 'build/minified/js/', src: ['libraries.min.js'], dest: 'build/readable/js/'}
                 ]
             }
@@ -86,7 +93,17 @@ module.exports = function(grunt) {
                 options: {
                     port: 8000,
                     base: 'src/',
-                    keepalive: true
+                    keepalive: true,
+                    open: gruntSettings.autoLaunchBrowser
+                }
+            },
+            sanityTest: {
+                options: {
+                    port: 8001,
+                    keepalive: true,
+                    open: {
+                        target: 'http://localhost:8001/sdk_core/sanity_test/'
+                    }
                 }
             }
         },
@@ -163,7 +180,8 @@ module.exports = function(grunt) {
                     dest: 'src/docs/readme.html'
                 }]
             }
-        }
+        },
+        prompt: sdkGrunt.promptConfig()
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -177,7 +195,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-qunit');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-md2html');
-
+    grunt.loadNpmTasks('grunt-prompt');
 
     grunt.registerTask('default', function() {
         grunt.task.run(['serve']);
@@ -191,47 +209,58 @@ module.exports = function(grunt) {
         grunt.task.run(['md2html']);
     });
 
-    grunt.registerTask('serve', [
-        'clean',
-        'bower',
-        'document',
-        'connect:serverAlive'
-    ]);
+    grunt.registerTask('serve', function() {
+        grunt.task.run([
+                'clean',
+                'bower',
+                'document',
+                'connect:serverAlive'
+            ]
+        );
+    });
 
-    grunt.registerTask('build', function() {
-        grunt.customSdkMethods.logMinFilesMsg();
+    grunt.registerTask('build', function(skipMsg) {
+        if (!skipMsg) {
+            skipMsg = false;
+        }
+
+        if (!skipMsg) {
+            gruntHelper.logMinFilesMsg(grunt);
+        }
 
         grunt.task.run([
-            'jshint',
-            'test',
-            'clean',
-            'uglify:minified',
-            'uglify:readable',
-            'cssmin:minified',
-            'cssmin:readable',
-            'copy:minified',
-            'copy:readable',
-            'targethtml:minified',
-            'targethtml:readable'
-        ]
+                'jshint',
+                'test',
+                'clean',
+                'uglify:minified',
+                'uglify:readable',
+                'cssmin:minified',
+                'cssmin:readable',
+                'copy:minified',
+                'copy:readable',
+                'targethtml:minified',
+                'targethtml:readable'
+            ]
         );
     });
 
     grunt.registerTask('test', function(testType) {
         if (!testType) {
-            testType = 'all';
+            testType = 'all'
         }
 
         grunt.task.run(['connect:server', 'qunit:' + testType]);
     });
 
-    grunt.customSdkMethods = {
-        logMinFilesMsg : function() {
-            grunt.log.writeln('**************************************');
-            grunt.log.writeln('Building your app now... Please ensure that:');
-            grunt.log.writeln('');
-            grunt.log.writeln('(a) The libraryPackageMinFiles array in package.json includes the correct paths to all the library files you want included in your app.');
-            grunt.log.writeln('**************************************');
-        }
-    };
+    sdkGrunt.bindValidate(grunt, sdkNode);
 };
+
+gruntHelper.logMinFilesMsg = function(grunt) {
+    "use strict";
+
+    grunt.log.writeln('**************************************');
+    grunt.log.writeln('Building your app now... Please ensure that:');
+    grunt.log.writeln('');
+    grunt.log.writeln('(a) The libraryPackageMinFiles array in package.json includes the correct paths to all the library files you want included in your app.');
+    grunt.log.writeln('**************************************');
+}

@@ -2,7 +2,7 @@
     "passfail"      : false,
     "maxerr"        : 100,
     "browser"       : true,
-    "node"          : false,
+    "node"          : true,
     "rhino"         : false,
     "couch"         : false,
     "wsh"           : false,
@@ -11,9 +11,9 @@
     "mootools"      : false,
     "dojo"          : false,
     "predef"        : [
-        "CBATOOLS",
-        "module",
-        "yepnope"
+        "yepnope",
+        "QUnit",
+        "$APP"
     ],
     "debug"         : false,
     "devel"         : true,
