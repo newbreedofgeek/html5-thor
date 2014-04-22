@@ -1,7 +1,6 @@
 # HTML5 Thor
 
-This is official Foxtel App Development SDK that needs to be used by HTML5 app developers to develop application for the IQ3 environment. It's a simple yet powerful HTML5 App Tooling framework that provides you the tools needed to build efficient single page Web Apps.
-
+HTML5 Thor is a simple HTML5 App Tooling framework that provides you the tools needed to build efficient single page or multi page Web Apps. It also has a complete GruntJS workflow.
 
 
 ## Features
@@ -45,7 +44,7 @@ This is official Foxtel App Development SDK that needs to be used by HTML5 app d
         $ grunt test:integration //Runs only the Integration tests
         ```
   + ** validate **
-      - This is a core utility task you can run to ensure that changes you make to the Core SDK files and folders dont break the 'Folder Structure Integrity' (see below)
+      - This is a core utility task you can run to ensure that changes you make to the Core Thor files and folders dont break the 'Folder Structure Integrity' (see below)
 
 
 ### Supported Platforms
@@ -103,12 +102,10 @@ HTML5 Thor will continually strive for full automation, but for now the followin
 
 
 ### JavaScript Quality Control via JSHint
-* Foxtel enforces JavaScript code quality via JSHint by putting your app through a set of JSHint rules to check its conformance to industry standards
+* Thor enforces JavaScript code quality via JSHint by putting your app through a set of JSHint rules to check its conformance to industry standards
 * These rules are described to your app locally using the .jshintrc config file
-* The .jshintrc config file evolves separately in this repo - [JSHint Config Template] (https://github.com/newbreedofgeek/jshint-config-template) and you can choose to update to newer versions if you want (1.0.0 is the config version being used currently in the SDK)
-* You can audit your own code against the Foxtel rules in the following ways:
-    * By running 'grunt jshint' using your command line
-    * If you are using the WebStorm IDE, then you can run it within your IDE by going to Code -> Inspect Code and selecting "jshint-scope" as your Custom scope and "JavaScript Inspections" as your inspection profile.
+* The .jshintrc config file evolves separately in this repo - [JSHint Config Template] (https://github.com/newbreedofgeek/jshint-config-template) and you can choose to update to newer versions if you want (1.0.0 is the config version being used currently)
+* The JSHint checks are built into the 'build' and 'package' steps, but if you want to run it on it's own you can do so with the 'grunt jshint' command.
 * To learn more on how to prevent your custom variables and coding style from appearing as errors etc, visit this [readme] (https://github.com/newbreedofgeek/jshint-config-template) or read the [JSHint documentation] (http://jshint.com/docs/)
 
 
@@ -120,15 +117,15 @@ HTML5 Thor will continually strive for full automation, but for now the followin
 
 
 
-### Core SDK Files
-The following files are core to the SDK and should not be deleted and should only be modified with caution.
+### Core HTML5 Thor Files
+The following files are core to how Thor provides workflow and should not be deleted and should only be modified with caution.
 
 
 1. "sdk_core" folder
-This folder and its contents should NEVER be modified or deleted as they are the private utility methods that keep your SDK working smoothly.
+This folder and its contents should NEVER be modified or deleted as they are the private utility methods that keep your app's workflow working smoothly.
 
 2. ".gitignore"
-You GIT rules live here. GIT is the official Source Control solution for Foxtel SDK based apps. You can choose to use any other source control systems internally but you need to release your code to our GIT server for audit/testing/deployment etc.
+You GIT rules live here.
 
 3. ".jshintrc"
 These are your JSHint rules, see the JavaScript Quality Control via JSHint section above for more details.
@@ -140,7 +137,7 @@ Bower is used for Package Management, you can use this to specify if you need a 
 This are your Grunt rules. Please don't edit any of the tasks in this file.
 
 6. "package.json"
-This is file that stores meta data on your app and is a core file that you need to keep updated. It's used by Grunt as well as our automated app audit systems.
+This is file that stores meta data on your app and is a core file that you need to keep updated.
 
 7. "README.md"
 This is your user Documentation. Keep it updated at all times as its best practice.
@@ -152,15 +149,15 @@ This is your user Documentation. Keep it updated at all times as its best practi
 
 **The Current Framework:**
 
-This SDK currently does not use any specific framework and instead is pure ""vanilla javascript"". It uses the YepNope plugin to insert the various javascript files when in Dev mode.
+Thor currently does not use any specific framework and instead is pure ""vanilla javascript"". It uses the YepNope plugin to insert the various javascript files when in Dev mode.
 
 **Using Other Frameworks:**
 
 - The there many good MVC / Development Frameworks out there (Backbone.js, Knockout.JS - to name a few).
 
-- This SDK is built in such a way that you can use your own preferred Frameworks to develop. This is because we want to promote open standards and innovation and let developers try out new frameworks.
+- HTML5 Thor is built in such a way that you can use your own preferred Frameworks to develop. This is because we want to promote open standards and innovation and let developers try out new frameworks.
 
-- But if you choose your own Development Framework you still need to maintain the SDK's "Folder Structure Integrity" to ensure the app conforms to some automated 'hooks' our build systems look for when it comes time to review and deploy your code.
+- But if you choose your own Development Framework you still need to maintain the HTML5 Thor's "Folder Structure Integrity" to ensure the app conforms to some automated 'hooks' our build systems look for when it comes time to review and deploy your code.
 
 - As mentioned above in the 'Folder Structure' section, you develop by working in Dev mode which is purely within the 'src/' folder. The root page of your app is 'index.html'. The **'Src' Directory Structure Rules** and **'index.html' Page Structure Rules** you need to maintain within this src folder is given below.
 
@@ -242,7 +239,7 @@ src/
 ```
 
 ### Folder Structure Integrity
-The SDK is a open and flexible option to build your apps. But it also is the foundation to automate the deployment process. As such, as a developer you need to ensure you dont break the 'Folder Structure Integrity' that is required by the CT teams automated systems. This can be validated by running the 'validate' grunt task. This task does the following:
+Thor is a open and flexible option to build your apps. But it also acts as a the foundation to an SDK that can be used in large development teams who churn out HTML5 apps. As such, as a developer you need to ensure you dont break the 'Folder Structure Integrity'. This can be validated by running the 'validate' grunt task. This task does the following:
 
 **1. Validates your App's folder structure**
 
@@ -300,7 +297,7 @@ http://markpaul.name/dont-delete/html5-thor/v4.0.0/src/tests/integration
         - Removed (Meta): The "version" property in bower.json were removed as its not needed.
         - Added (Documentation): Added a section on "Folder Structure Integrity" which describes how automated systems will test your app's integrity and validate your app for conformance. (optional feature that will be useful if you use HML5 thor as a SDK for large teams where multiple apps are being built)
         - Updated (Documentation): has been updated to reflect the changes in this version.
-        - Other: Grunt 'serve' auto loads the SDK in default browser, but this can be disabled if its annoying.
+        - Other: Grunt 'serve' auto loads the app in default browser, but this can be disabled if its annoying.
         - Other: The JSHint config enables a 'node' default environment as well.
 
 - 3.0.0
