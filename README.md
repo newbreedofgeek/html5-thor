@@ -276,10 +276,14 @@ Step 3 - It then makes sure the resulting builds conform to the following struct
 
 Our automated systems will run the 'build' task to generate the app to prepare for deployment so you need to ensure that you Sanity test both the minified and readable builds. A link is provided for you to do the Sanity Tests.
 
-### Current and Known Limitations
-* The 'Bower' task does not work in foxtel corp internet network due to the git protocol being blocked. This is not an issue right now to our dev team as the basic required libraries are included in the SDK.
+### Demo
 
+http://markpaul.name/dont-delete/html5-thor/v4.0.0/build/minified/
++ The demo shows the last version that had major UI updates (Patches and task/build updates are not shown as they wont be visible in the ui)
 
+### Integration Tests
+
+http://markpaul.name/dont-delete/html5-thor/v4.0.0/src/tests/integration
 
 ### Release History
 - 4.0.0
