@@ -2,6 +2,8 @@
 
 HTML5 Thor is a simple HTML5 App Tooling framework that provides you the tools needed to build efficient single page or multi page Web Apps. It also has a complete GruntJS workflow.
 
+![image](http://markpaul.name/dont-delete/html5-thor/hotlink/thor-one.png)
+
 
 ## Features
 * Contains a simple demo app to get your started
@@ -326,3 +328,8 @@ http://markpaul.name/dont-delete/html5-thor/v4.0.0/src/tests/integration
 - 1.0.0
     - (Released on 24/01/2014)
         - Initial release that was forked out of HTML5 Skeletor.
+
+
+
+##### Thanks:
+[Nanda @ clker](http://www.clker.com/clipart-254019.html) for Thor clipart.
